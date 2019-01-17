@@ -1,6 +1,4 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import { makeMainRoutes } from './routes'
 
 import * as serviceWorker from './serviceWorker'

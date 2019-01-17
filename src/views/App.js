@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
 
 class App extends Component {
   goTo(route) {
@@ -7,59 +6,42 @@ class App extends Component {
   }
 
   login() {
-    this.props.auth.login();
+    this.props.auth.login()
   }
 
   logout() {
-    this.props.auth.logout();
+    this.props.auth.logout()
   }
 
   componentDidMount() {
-    const { renewSession } = this.props.auth;
+    const { renewSession } = this.props.auth
 
     if (localStorage.getItem('isLoggedIn') === 'true') {
-      renewSession();
+      renewSession()
     }
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated } = this.props.auth
 
     return (
       <div>
-        <div fluid>
+        <div>
           <header>
             <div>
-              <a href="#">Auth0 - React</a>
+              <a href='#'>Auth0 - React</a>
             </div>
-            <button
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </button>
+            <button onClick={this.goTo.bind(this, 'home')}>Home</button>
             {
-              !isAuthenticated() && (
-                  <button
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <button
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </button>
-                )
+              isAuthenticated()
+                ? <button onClick={this.login.bind(this)}>Log In</button>
+                : <button onClick={this.logout.bind(this)}>Log Out</button>
             }
           </header>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
